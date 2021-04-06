@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Team>
+<h5>Teams</h5>
+    <a class="@((string)ViewContext.RouteData.Values["teamname"] == null ? "btn btn-secondary" : "btn btn-outline-info")" asp-action="Index" asp-controller="Home" asp-route-teamid="">Home</a>
+<br />
+
+@foreach (var x in Model)
+{
+    <a class="@((string)ViewContext.RouteData.Values["teamname"] == x.TeamName ? "btn btn-secondary" : "btn btn-outline-info")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-teamname="@x.TeamName"
+       asp-route-teamid="@x.TeamId"
+    >
+        @x.TeamName
+    </a>
+    <br />
+}
